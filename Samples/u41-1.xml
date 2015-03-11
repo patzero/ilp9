@@ -8,22 +8,22 @@
 ;;; end of u41-1.scm
 
  -->
-<program
-><!-- test:name description='invocation primitive print (entier)' 
---><invocation
-><function
-><variable name='print'
-/></function
-><arguments
-><binaryOperation operator='+'
-><leftOperand
-><integer value='20'
-/></leftOperand
-><rightOperand
-><integer value='1'
-/></rightOperand
-></binaryOperation
-></arguments
-></invocation
-></program
->
+<program>
+   <!-- test:name description='invocation primitive print (entier)' 
+-->
+   <invocation>
+      <function>
+         <variable name="print" />
+      </function>
+      <arguments>
+         <binaryOperation operator="+">
+            <leftOperand>
+               <integer value="20" />
+            </leftOperand>
+            <rightOperand>
+               <integer value="1" />
+            </rightOperand>
+         </binaryOperation>
+      </arguments>
+   </invocation>
+</program>

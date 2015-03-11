@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.math.BigDecimal;
 
 import com.paracamplus.ilp9.interpreter.interfaces.IGlobalVariableEnvironment;
+import com.paracamplus.ilp9.interpreter.primitive.Implies;
 import com.paracamplus.ilp9.interpreter.primitive.Newline;
 import com.paracamplus.ilp9.interpreter.primitive.Print;
 import com.paracamplus.ilp9.interpreter.primitive.Throw;
@@ -22,5 +23,6 @@ public class GlobalVariableStuff {
         env.addGlobalVariableValue(new Print(out));
         env.addGlobalVariableValue(new Newline(out));
         env.addGlobalVariableValue(new Throw());
+        env.addGlobalVariableValue(new Implies());
     }
 }

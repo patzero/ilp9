@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<program>
+   <!-- test:name description='invocation primitive implies' -->
+   <invocation>
+      <function>
+         <variable name="implies" />
+      </function>
+      <arguments>
+		 <!-- 20 < 21 = true -->
+         <binaryOperation operator='&lt;'>
+            <leftOperand>
+               <integer value="20" />
+            </leftOperand>
+            <rightOperand>
+               <integer value="21" />
+            </rightOperand>
+         </binaryOperation>
+		 
+		 <!-- 21 < 20 = false -->
+		 <binaryOperation operator='&lt;'>
+            <leftOperand>
+               <integer value="21" />
+            </leftOperand>
+            <rightOperand>
+               <integer value="20" />
+            </rightOperand>
+         </binaryOperation>
+		 
+      </arguments>
+   </invocation>
+</program>
