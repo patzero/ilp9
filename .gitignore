@@ -7,3 +7,4 @@ Samples/*.c
 C/HOSTTYPE
 *.class
 *BAK
+*.settings
