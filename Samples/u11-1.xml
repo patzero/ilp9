@@ -8,15 +8,14 @@
 ;;; end of u11-1.scm
 
  -->
-<program
-><!-- test:name description='operateur binaire - (resultat negatif)' 
---><binaryOperation operator='-'
-><leftOperand
-><integer value='34'
-/></leftOperand
-><rightOperand
-><integer value='43'
-/></rightOperand
-></binaryOperation
-></program
->
+<program>
+   <!-- test:name description='operateur binaire - (resultat negatif)' -->
+   <binaryOperation operator="-">
+      <leftOperand>
+         <integer value="34" />
+      </leftOperand>
+      <rightOperand>
+         <integer value="43" />
+      </rightOperand>
+   </binaryOperation>
+</program>

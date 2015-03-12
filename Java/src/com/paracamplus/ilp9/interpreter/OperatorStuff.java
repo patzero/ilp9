@@ -10,6 +10,7 @@ import com.paracamplus.ilp9.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp9.interpreter.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp9.interpreter.operator.Add;
 import com.paracamplus.ilp9.interpreter.operator.And;
+import com.paracamplus.ilp9.interpreter.operator.Conditional;
 import com.paracamplus.ilp9.interpreter.operator.Equal;
 import com.paracamplus.ilp9.interpreter.operator.Greater;
 import com.paracamplus.ilp9.interpreter.operator.GreaterThan;
@@ -51,5 +52,12 @@ public class OperatorStuff {
         env.addOperator(new And());
         env.addOperator(new Or());
         env.addOperator(new Xor());
+    }
+    
+    public static void fillTernaryOperators (IOperatorEnvironment env) 
+            throws EvaluationException {
+    
+        // Add Ternary operator : Conditional
+        env.addOperator(new Conditional());
     }
 }

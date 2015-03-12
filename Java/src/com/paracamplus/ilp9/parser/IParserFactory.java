@@ -46,6 +46,14 @@ public interface IParserFactory {
             IASToperator operator,
             IASTexpression leftOperand,
             IASTexpression rightOperand);
+    
+    // Ternary Operation
+    IASTexpression newTernaryOperation(
+            IASToperator operator,
+            IASTexpression firstOperand,
+            IASTexpression secondOperand,
+            IASTexpression thirdOperand);
+
 
     IASTexpression newIntegerConstant(String value);
 

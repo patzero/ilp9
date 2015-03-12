@@ -69,6 +69,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -422,6 +423,34 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException> {
         emit("} \n");
         return null;
     }
+	public Void visit(IASTternaryOperation iast, Context context)
+			throws CompilationException {
+		IASTvariable tmp1 = context.newTemporaryVariable();
+        IASTvariable tmp2 = context.newTemporaryVariable();
+        IASTvariable tmp3 = context.newTemporaryVariable();
+        emit("{ \n");
+        emit("  ILP_Object " + tmp1.getMangledName() + "; \n");
+        emit("  ILP_Object " + tmp2.getMangledName() + "; \n");
+        emit("  ILP_Object " + tmp3.getMangledName() + "; \n");
+        
+        Context c1 = context.redirect(new AssignDestination(tmp1));
+        iast.getFirstOperand().accept(this, c1);
+        Context c2 = context.redirect(new AssignDestination(tmp2));
+        iast.getSecondOperand().accept(this, c2);
+        Context c3 = context.redirect(new AssignDestination(tmp3));
+        iast.getThirdOperand().accept(this, c3);
+        
+        String cName = operatorEnvironment.getTernaryOperator(iast.getOperator());
+        emit(context.destination.compile());
+        emit(cName);
+        emit("(");
+        emit(tmp1.getMangledName());
+        emit(", ");
+        emit(tmp2.getMangledName());
+        emit(");\n");
+        emit("} \n");
+        return null;
+	}
     
     public Void visit(IASToperator iast, Context context)
            throws CompilationException {
@@ -1282,4 +1311,5 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException> {
         emit("ILP_FindAndCallSuperMethod(); \n");
         return null;
     }
+	
 }

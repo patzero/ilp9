@@ -14,9 +14,13 @@ public interface IOperatorEnvironment {
             throws CompilationException;
     String getBinaryOperator (IASToperator operator) 
             throws CompilationException;
+    String getTernaryOperator (IASToperator operator) 
+            throws CompilationException;
     void addUnaryOperator (String operator, String cOperator)
             throws CompilationException;
     void addBinaryOperator (String operator, String cOperator) 
             throws CompilationException;
+	void addTernaryOperator(String operator, String cOperator)
+			throws CompilationException;
 
 }

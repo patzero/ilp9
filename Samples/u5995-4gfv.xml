@@ -12,54 +12,54 @@
 ;;; end of u5995-4trc.scm
 
  -->
-<program
-><!-- test:name description='variable globale fonctionnelle mutable' 
---><functionDefinition name='deuxfois'
-><variables
-><variable name='x'
-/></variables
-><body
-><binaryOperation operator='*'
-><leftOperand
-><integer value='2'
-/></leftOperand
-><rightOperand
-><variable name='x'
-/></rightOperand
-></binaryOperation
-></body
-></functionDefinition
-><block
-><bindings
-><binding
-><variable name='f'
-/><initialisation
-><variable name='deuxfois'
-/></initialisation
-></binding
-></bindings
-><body
-><assignment name='g'
-><value
-><variable name='f'
-/></value
-></assignment
-></body
-></block
-><binaryOperation operator='-'
-><leftOperand
-><invocation
-><function
-><variable name='g'
-/></function
-><arguments
-><integer value='3000'
-/></arguments
-></invocation
-></leftOperand
-><rightOperand
-><integer value='5'
-/></rightOperand
-></binaryOperation
-></program
->
+<program>
+   <!-- test:name description='variable globale fonctionnelle mutable' 
+-->
+   <functionDefinition name="deuxfois">
+      <variables>
+         <variable name="x" />
+      </variables>
+      <body>
+         <binaryOperation operator="*">
+            <leftOperand>
+               <integer value="2" />
+            </leftOperand>
+            <rightOperand>
+               <variable name="x" />
+            </rightOperand>
+         </binaryOperation>
+      </body>
+   </functionDefinition>
+   <block>
+      <bindings>
+         <binding>
+            <variable name="f" />
+            <initialisation>
+               <variable name="deuxfois" />
+            </initialisation>
+         </binding>
+      </bindings>
+      <body>
+         <assignment name="g">
+            <value>
+               <variable name="f" />
+            </value>
+         </assignment>
+      </body>
+   </block>
+   <binaryOperation operator="-">
+      <leftOperand>
+         <invocation>
+            <function>
+               <variable name="g" />
+            </function>
+            <arguments>
+               <integer value="3000" />
+            </arguments>
+         </invocation>
+      </leftOperand>
+      <rightOperand>
+         <integer value="5" />
+      </rightOperand>
+   </binaryOperation>
+</program>

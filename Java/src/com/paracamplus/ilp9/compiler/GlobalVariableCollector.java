@@ -49,6 +49,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -143,6 +144,17 @@ implements IASTCvisitor<Set<IASTCglobalVariable>,
         iast.getRightOperand().accept(this, result);
         return result;
     }
+    
+	public Set<IASTCglobalVariable> visit(
+			IASTternaryOperation iast,
+			Set<IASTCglobalVariable> result)
+					throws CompilationException {
+		iast.getFirstOperand().accept(this, result);
+        iast.getSecondOperand().accept(this, result);
+        iast.getThirdOperand().accept(this, result);
+        return result;
+	}
+    
     public Set<IASTCglobalVariable> visit(
             IASTunaryOperation iast,
             Set<IASTCglobalVariable> result) 
@@ -369,4 +381,5 @@ implements IASTCvisitor<Set<IASTCglobalVariable>,
                     throws CompilationException {
         return result;
     }
+
 }

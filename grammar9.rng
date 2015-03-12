@@ -223,6 +223,8 @@
     <choice>
       <ref name="unaryOperation"/>
       <ref name="binaryOperation"/>
+	  <!-- TP Nano-Project 3.7 :  Add the ternary operator -->
+	  <ref name="ternaryOperation"/>
     </choice>
   </define>
   <define name="unaryOperation">
@@ -270,6 +272,28 @@
       </element>
     </element>
   </define>
+  
+   <define name="ternaryOperation">
+    <element name="ternaryOperation">
+		<attribute name="operator">
+			<choice>
+			  <value>?:</value>
+			</choice>
+		</attribute>
+		<element name="firstOperand">
+			<ref name="expression"/>
+		</element>
+		<element name="secondOperand">
+			<ref name="expression"/>
+		</element>
+		<element name="thirdOperand">
+			<ref name="expression"/>
+		</element>
+    </element>
+   </define>
+  
+  
+  
   <define name="constant">
     <choice>
       <element name="integer">

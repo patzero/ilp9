@@ -35,5 +35,7 @@ public class OperatorStuff {
         env.addBinaryOperator("&", "ILP_And");
         env.addBinaryOperator("|", "ILP_Or");
         env.addBinaryOperator("^", "ILP_Xor");
+        
+        env.addTernaryOperator("?:", "ILP_Con");
     }
 }

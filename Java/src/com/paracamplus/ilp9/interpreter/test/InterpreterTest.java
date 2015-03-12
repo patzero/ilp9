@@ -80,6 +80,7 @@ public class InterpreterTest {
         IOperatorEnvironment oe = new OperatorEnvironment();
         OperatorStuff.fillUnaryOperators(oe);
         OperatorStuff.fillBinaryOperators(oe);
+        OperatorStuff.fillTernaryOperators(oe);
         IClassEnvironment ice = new ClassEnvironment(stdout);
         Interpreter interpreter = new Interpreter(gve, oe, ice);
         ILexicalEnvironment lexenv = new EmptyLexicalEnvironment();

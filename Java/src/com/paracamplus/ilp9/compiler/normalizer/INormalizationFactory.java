@@ -77,6 +77,10 @@ import com.paracamplus.ilp9.interfaces.IASTvariable;
      IASTexpression newBinaryOperation(IASToperator operator,
                                        IASTexpression leftOperand, 
                                        IASTexpression rightOperand);
+     IASTexpression newTernaryOperation(IASToperator operator,
+							             IASTexpression firstOperand, 
+							             IASTexpression secondOperand,
+							             IASTexpression thidOperand);
 
      IASTexpression newIntegerConstant(String value);
 

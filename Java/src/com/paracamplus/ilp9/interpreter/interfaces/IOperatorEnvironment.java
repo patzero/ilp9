@@ -13,5 +13,7 @@ public interface IOperatorEnvironment {
             throws EvaluationException;
     IOperator getBinaryOperator (IASToperator operator) 
             throws EvaluationException;
+    IOperator getTernaryOperator (IASToperator operator) 
+            throws EvaluationException;
     void addOperator (IOperator operator) throws EvaluationException;
 }

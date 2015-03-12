@@ -36,6 +36,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -121,15 +122,13 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
         }
     }
     
-    public Object visit(IASTassignment iast, ILexicalEnvironment lexenv) 
-            throws EvaluationException {
+    public Object visit(IASTassignment iast, ILexicalEnvironment lexenv) throws EvaluationException {
         IASTvariable variable = iast.getVariable();
         Object value = iast.getExpression().accept(this, lexenv);
         try {
             lexenv.update(variable, value);
         } catch (EvaluationException exc) {
-            getGlobalVariableEnvironment()
-                .updateGlobalVariableValue(variable.getName(), value);
+            getGlobalVariableEnvironment().updateGlobalVariableValue(variable.getName(), value);
         }
         return value;
     }
@@ -150,6 +149,17 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
         IOperator op = getOperatorEnvironment().getBinaryOperator(operator);
         return op.apply(leftOperand, rightOperand);
     }
+    
+    // Ternary Operation visit
+    public Object visit(IASTternaryOperation iast, ILexicalEnvironment lexenv)
+			throws EvaluationException {
+    	Object firstOperand = iast.getFirstOperand().accept(this, lexenv);
+        Object secondOperand = iast.getSecondOperand().accept(this, lexenv);
+        Object thirdOperand = iast.getThirdOperand().accept(this, lexenv);
+        IASToperator operator = iast.getOperator();
+        IOperator op = getOperatorEnvironment().getTernaryOperator(operator);
+        return op.apply(firstOperand, secondOperand, thirdOperand);
+	}
 
     public Object visit(IASToperator iast, ILexicalEnvironment lexenv) 
             throws EvaluationException {
@@ -407,4 +417,5 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
          IMethod supermethod = isci.getSuperMethod();
          return supermethod.apply(this, isci.getArguments());
     }
+
 }

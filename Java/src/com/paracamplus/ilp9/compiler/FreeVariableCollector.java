@@ -53,6 +53,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -133,6 +134,15 @@ implements IASTCvisitor<Void, Set<IASTClocalVariable>, CompilationException> {
         iast.getRightOperand().accept(this, variables);
         return null;
     }
+    
+	public Void visit(IASTternaryOperation iast, Set<IASTClocalVariable> variables)
+			throws CompilationException {
+	     iast.getFirstOperand().accept(this, variables);
+	     iast.getSecondOperand().accept(this, variables);
+	     iast.getThirdOperand().accept(this, variables);
+	     return null;
+	}
+    
     public Void visit(IASTunaryOperation iast, Set<IASTClocalVariable> variables)
             throws CompilationException {
         iast.getOperand().accept(this, variables);
@@ -402,4 +412,6 @@ implements IASTCvisitor<Void, Set<IASTClocalVariable>, CompilationException> {
         throws CompilationException {
         return null;
     }
+
+	
 }

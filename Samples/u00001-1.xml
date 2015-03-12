@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- 
+
+;;; $Id: u11-1.scm 405 2006-09-13 17:21:53Z queinnec $
+(comment "operateur binaire - (resultat negatif)" -9)
+(- 34 43)
+
+;;; end of u11-1.scm
+
+ -->
+<program>
+   <!-- test:name description='operateur binaire - (resultat negatif)' -->
+   <ternaryOperation operator="?:">
+   
+	<!-- result = 0 < 1 ? true : false; -->
+	
+	  <!-- if 0 < 1-->
+      <firstOperand>
+        <binaryOperation operator="&lt;">
+		  <leftOperand>
+			 <integer value="0" />
+		  </leftOperand>
+		  <rightOperand>
+			 <integer value="1" />
+		  </rightOperand>
+	    </binaryOperation>
+      </firstOperand>
+	  
+	  <!-- then value = true -->
+      <secondOperand>
+		 <boolean value="true" />
+      </secondOperand>
+	  
+	  <!-- else value = false-->
+	  <thirdOperand>
+         <boolean value="false" />
+      </thirdOperand>
+	  
+   </ternaryOperation>
+</program>

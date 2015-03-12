@@ -54,6 +54,10 @@ public class Parser extends AbstractExtensibleParser {
         addMethod("booleanConstant", Parser.class, "boolean");
         addMethod("unaryOperation", Parser.class);
         addMethod("binaryOperation", Parser.class);
+        
+        // Add TernaryOperation
+        addMethod("ternaryOperation", Parser.class);
+        
         addMethod("block", Parser.class);
         addMethod("binding", Parser.class);
         addMethod("variable", Parser.class);
@@ -236,6 +240,19 @@ public class Parser extends AbstractExtensibleParser {
         String operatorName = e.getAttribute("operator");
         IASToperator operator = getFactory().newOperator(operatorName);
         return getFactory().newBinaryOperation(operator, operand1, operand2);
+    }
+    
+    // Add Ternary Operation method
+    public IASTexpression ternaryOperation (Element e) throws ParseException {
+    	String operatorName = e.getAttribute("operator");
+        IASToperator operator = getFactory().newOperator(operatorName);
+        IAST iast1 = findThenParseChildContent(e, "firstOperand");
+        IASTexpression operand1 = narrowToIASTexpression(iast1);
+        IAST iast2 = findThenParseChildContent(e, "secondOperand");
+        IASTexpression operand2 = narrowToIASTexpression(iast2);
+        IAST iast3 = findThenParseChildContent(e, "thirdOperand");
+        IASTexpression operand3 = narrowToIASTexpression(iast3);
+        return getFactory().newTernaryOperation(operator, operand1, operand2, operand3);
     }
     
     public IASTexpression block (Element e) throws ParseException {

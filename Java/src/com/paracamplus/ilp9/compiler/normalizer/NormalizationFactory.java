@@ -21,6 +21,7 @@ import com.paracamplus.ilp9.ast.ASTsend;
 import com.paracamplus.ilp9.ast.ASTsequence;
 import com.paracamplus.ilp9.ast.ASTstring;
 import com.paracamplus.ilp9.ast.ASTsuper;
+import com.paracamplus.ilp9.ast.ASTternaryOperation;
 import com.paracamplus.ilp9.ast.ASTtry;
 import com.paracamplus.ilp9.ast.ASTunaryOperation;
 import com.paracamplus.ilp9.compiler.CompilationException;
@@ -175,6 +176,15 @@ implements INormalizationFactory {
             IASTexpression leftOperand, 
             IASTexpression rightOperand) {
         return new ASTbinaryOperation(operator, leftOperand, rightOperand);
+    }
+    
+    // Ternary
+    public IASTexpression newTernaryOperation(
+            IASToperator operator,
+            IASTexpression firstOperand, 
+            IASTexpression secondOperand,
+            IASTexpression thirdOperand) {
+        return new ASTternaryOperation(operator, firstOperand, secondOperand, thirdOperand);
     }
     
     public IASTexpression newIntegerConstant(String value) {

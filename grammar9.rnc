@@ -103,6 +103,7 @@ variable = element variable {
 operation =
    unaryOperation
  | binaryOperation
+ | ternaryOperation
 
 unaryOperation = element unaryOperation {
    attribute operator { "-" | "!" },
@@ -116,6 +117,12 @@ binaryOperation = element binaryOperation {
       "<" | "<=" | "==" | ">=" | ">" | "<>" | "!="       # comparison
    },
    element rightOperand { expression }
+}
+ternaryOperation = element ternaryOperation {
+   attribute operator { "?:" },
+   element firstOperand { expression },
+   element secondOperand { expression },
+   element thirdOperand { expression }
 }
 
 constant =

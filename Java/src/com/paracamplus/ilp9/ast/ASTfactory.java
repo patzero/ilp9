@@ -33,6 +33,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -69,15 +70,20 @@ public class ASTfactory implements IParserFactory {
         return new ASTinvocation(function, arguments);
     }
 
-    public IASTunaryOperation newUnaryOperation(IASToperator operator,
-                                                IASTexpression operand) {
+    public IASTunaryOperation newUnaryOperation(IASToperator operator, IASTexpression operand) {
         return new ASTunaryOperation(operator, operand);
     }
 
-    public IASTbinaryOperation newBinaryOperation(IASToperator operator,
-            IASTexpression leftOperand, IASTexpression rightOperand) {
+    public IASTbinaryOperation newBinaryOperation(IASToperator operator, IASTexpression leftOperand, IASTexpression rightOperand) {
         return new ASTbinaryOperation(operator, leftOperand, rightOperand);
     }
+    
+    // Ternary Operation
+    public IASTternaryOperation newTernaryOperation(IASToperator operator, IASTexpression firstOperand, IASTexpression secondOperand,  IASTexpression thirdOperand) {
+        return new ASTternaryOperation(operator, firstOperand, secondOperand, thirdOperand);
+    }
+
+
 
     public IASTinteger newIntegerConstant(String value) {
         return new ASTinteger(value); 
@@ -197,4 +203,5 @@ public class ASTfactory implements IParserFactory {
     public IASTsuper newSuper() {
         return new ASTsuper();
     }
+
 }

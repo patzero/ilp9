@@ -17,9 +17,12 @@ public class OperatorEnvironment implements IOperatorEnvironment {
     public OperatorEnvironment () {
         this.unaryOperatorEnvironment = new HashMap<>();
         this.binaryOperatorEnvironment = new HashMap<>();
+        this.ternaryOperatorEnvironment = new HashMap<>();
     }
     private final Map<String, String> unaryOperatorEnvironment;
     private final Map<String, String> binaryOperatorEnvironment;
+    private final Map<String, String> ternaryOperatorEnvironment;
+    
     
     public String getUnaryOperator(IASToperator operator)
             throws CompilationException {
@@ -42,6 +45,17 @@ public class OperatorEnvironment implements IOperatorEnvironment {
             throw new CompilationException(msg);
         }
     }
+    
+	public String getTernaryOperator(IASToperator operator)
+			throws CompilationException {
+		String meaning = ternaryOperatorEnvironment.get(operator.getName());
+        if ( meaning != null ) {
+            return meaning;
+        } else {
+            String msg = "No such operator " + operator.getName();
+            throw new CompilationException(msg);
+        }
+	}
 
     public void addUnaryOperator(String operator, String cName) 
             throws CompilationException {
@@ -52,4 +66,11 @@ public class OperatorEnvironment implements IOperatorEnvironment {
             throws CompilationException {
         binaryOperatorEnvironment.put(operator, cName);
     }
+    
+    public void addTernaryOperator(String operator, String cName) 
+            throws CompilationException {
+        binaryOperatorEnvironment.put(operator, cName);
+    }
+
+
 }

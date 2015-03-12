@@ -51,6 +51,7 @@ import com.paracamplus.ilp9.interfaces.IASTsend;
 import com.paracamplus.ilp9.interfaces.IASTsequence;
 import com.paracamplus.ilp9.interfaces.IASTstring;
 import com.paracamplus.ilp9.interfaces.IASTsuper;
+import com.paracamplus.ilp9.interfaces.IASTternaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTtry;
 import com.paracamplus.ilp9.interfaces.IASTunaryOperation;
 import com.paracamplus.ilp9.interfaces.IASTvariable;
@@ -211,6 +212,14 @@ public class Normalizer implements
         IASTexpression right = iast.getRightOperand().accept(this, env);
         return factory.newBinaryOperation(operator, left, right);
     }
+    public IASTexpression visit(IASTternaryOperation iast, INormalizationEnvironment env) 
+    		throws CompilationException {
+    	IASToperator operator = iast.getOperator();
+        IASTexpression first = iast.getFirstOperand().accept(this, env);
+        IASTexpression second = iast.getSecondOperand().accept(this, env);
+        IASTexpression third = iast.getThirdOperand().accept(this, env);
+        return factory.newTernaryOperation(operator, first, second, third);
+	}
     
     public IASTexpression visit(IASToperator iast, INormalizationEnvironment env)
             throws CompilationException {
@@ -455,4 +464,5 @@ public class Normalizer implements
             throws CompilationException {
         return factory.newSuper();
     }
+
 }

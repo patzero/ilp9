@@ -10,25 +10,25 @@
 ;;; end of u50-2.scm
 
  -->
-<program
-><!-- test:name description='affectation' 
---><block
-><bindings
-><binding
-><variable name='x'
-/><initialisation
-><integer value='50'
-/></initialisation
-></binding
-></bindings
-><body
-><assignment name='x'
-><value
-><integer value='500'
-/></value
-></assignment
-><variable name='x'
-/></body
-></block
-></program
->
+<program>
+   <!-- test:name description='affectation' 
+-->
+   <block>
+      <bindings>
+         <binding>
+            <variable name="x" />
+            <initialisation>
+               <integer value="50" />
+            </initialisation>
+         </binding>
+      </bindings>
+      <body>
+         <assignment name="x">
+            <value>
+               <integer value="500" />
+            </value>
+         </assignment>
+         <variable name="x" />
+      </body>
+   </block>
+</program>

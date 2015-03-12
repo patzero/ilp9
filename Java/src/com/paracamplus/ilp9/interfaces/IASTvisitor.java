@@ -9,7 +9,10 @@ package com.paracamplus.ilp9.interfaces;
 public interface IASTvisitor<Result, Data, Anomaly extends Throwable> {
     Result visit(IASTalternative iast, Data data) throws Anomaly;
     Result visit(IASTassignment iast, Data data) throws Anomaly;
-    Result visit(IASTbinaryOperation iast, Data data) throws Anomaly;
+    Result visit(IASTbinaryOperation iast, Data data) throws Anomaly;    
+    //
+    Result visit(IASTternaryOperation iast, Data data) throws Anomaly;
+    
     Result visit(IASTblock iast, Data data) throws Anomaly;
     Result visit(IASTboolean iast, Data data) throws Anomaly;
     Result visit(IASTcodefinitions iast, Data data) throws Anomaly;
