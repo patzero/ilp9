@@ -17,7 +17,8 @@ public class GreaterThan extends BinaryOperator {
         super(">=");
     }
     
-    public Object apply (Object arg1, Object arg2) throws EvaluationException {
+    public Object apply (Object arg1, Object arg2) 
+    		throws EvaluationException {
         if ( arg1 instanceof BigInteger ) {
             BigInteger bi1 = (BigInteger) arg1;
             if ( arg2 instanceof BigInteger ) {

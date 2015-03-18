@@ -70,11 +70,14 @@ public class ASTfactory implements IParserFactory {
         return new ASTinvocation(function, arguments);
     }
 
-    public IASTunaryOperation newUnaryOperation(IASToperator operator, IASTexpression operand) {
+    public IASTunaryOperation newUnaryOperation(IASToperator operator, 
+    											IASTexpression operand) {
         return new ASTunaryOperation(operator, operand);
     }
 
-    public IASTbinaryOperation newBinaryOperation(IASToperator operator, IASTexpression leftOperand, IASTexpression rightOperand) {
+    public IASTbinaryOperation newBinaryOperation(IASToperator operator, 
+    		
+    		IASTexpression leftOperand, IASTexpression rightOperand) {
         return new ASTbinaryOperation(operator, leftOperand, rightOperand);
     }
     

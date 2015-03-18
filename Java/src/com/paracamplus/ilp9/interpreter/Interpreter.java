@@ -81,7 +81,6 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
     }
 
     // 
-    
     public Object visit(IASTprogram iast, ILexicalEnvironment lexenv) 
             throws EvaluationException {
         for ( IASTclassDefinition cd : iast.getClassDefinitions() ) {
@@ -122,13 +121,15 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
         }
     }
     
-    public Object visit(IASTassignment iast, ILexicalEnvironment lexenv) throws EvaluationException {
+    public Object visit(IASTassignment iast, ILexicalEnvironment lexenv) 
+    		throws EvaluationException {
         IASTvariable variable = iast.getVariable();
         Object value = iast.getExpression().accept(this, lexenv);
         try {
             lexenv.update(variable, value);
         } catch (EvaluationException exc) {
-            getGlobalVariableEnvironment().updateGlobalVariableValue(variable.getName(), value);
+            getGlobalVariableEnvironment().
+            	updateGlobalVariableValue(variable.getName(), value);
         }
         return value;
     }
@@ -153,12 +154,12 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
     // Ternary Operation visit
     public Object visit(IASTternaryOperation iast, ILexicalEnvironment lexenv)
 			throws EvaluationException {
-    	Object firstOperand = iast.getFirstOperand().accept(this, lexenv);
-        Object secondOperand = iast.getSecondOperand().accept(this, lexenv);
-        Object thirdOperand = iast.getThirdOperand().accept(this, lexenv);
+    	Object condition = iast.getCondition().accept(this, lexenv);
+        Object result1 = iast.getFirstResult().accept(this, lexenv);
+        Object result2 = iast.getSecondResult().accept(this, lexenv);
         IASToperator operator = iast.getOperator();
         IOperator op = getOperatorEnvironment().getTernaryOperator(operator);
-        return op.apply(firstOperand, secondOperand, thirdOperand);
+        return op.apply(condition, result1, result2);
 	}
 
     public Object visit(IASToperator iast, ILexicalEnvironment lexenv) 

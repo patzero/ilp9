@@ -120,9 +120,9 @@ binaryOperation = element binaryOperation {
 }
 ternaryOperation = element ternaryOperation {
    attribute operator { "?:" },
-   element firstOperand { expression },
-   element secondOperand { expression },
-   element thirdOperand { expression }
+   element condition { expression },
+   element firstResult{ expression },
+   element secondResult{ expression }
 }
 
 constant =

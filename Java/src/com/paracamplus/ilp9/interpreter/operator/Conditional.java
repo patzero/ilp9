@@ -17,11 +17,15 @@ public class Conditional extends TernaryOperator {
         super("?:");
     }
 
-	public Object apply(Object firstOperand, Object secondOperand, Object thirdOperator) throws EvaluationException {
-	
+	public Object apply(Object condition, Object firstResult, Object secondResult) throws EvaluationException {
 		Object result = null;
-		if(firstOperand instanceof Boolean) {
-			result = (boolean)firstOperand ? secondOperand : thirdOperator;
+		if(condition instanceof Boolean) {
+			//result = (boolean)firstOperand ? secondOperand : thirdOperator;		
+			if ((boolean) condition) {
+				result = firstResult;
+			} else {
+				result = secondResult;
+			}
 		}
 		else {
 			//System.out.println(firstOperand + " is not a condition");

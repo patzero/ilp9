@@ -246,11 +246,11 @@ public class Parser extends AbstractExtensibleParser {
     public IASTexpression ternaryOperation (Element e) throws ParseException {
     	String operatorName = e.getAttribute("operator");
         IASToperator operator = getFactory().newOperator(operatorName);
-        IAST iast1 = findThenParseChildContent(e, "firstOperand");
+        IAST iast1 = findThenParseChildContent(e, "condition");
         IASTexpression operand1 = narrowToIASTexpression(iast1);
-        IAST iast2 = findThenParseChildContent(e, "secondOperand");
+        IAST iast2 = findThenParseChildContent(e, "firstResult");
         IASTexpression operand2 = narrowToIASTexpression(iast2);
-        IAST iast3 = findThenParseChildContent(e, "thirdOperand");
+        IAST iast3 = findThenParseChildContent(e, "secondResult");
         IASTexpression operand3 = narrowToIASTexpression(iast3);
         return getFactory().newTernaryOperation(operator, operand1, operand2, operand3);
     }

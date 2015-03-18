@@ -215,9 +215,9 @@ public class Normalizer implements
     public IASTexpression visit(IASTternaryOperation iast, INormalizationEnvironment env) 
     		throws CompilationException {
     	IASToperator operator = iast.getOperator();
-        IASTexpression first = iast.getFirstOperand().accept(this, env);
-        IASTexpression second = iast.getSecondOperand().accept(this, env);
-        IASTexpression third = iast.getThirdOperand().accept(this, env);
+        IASTexpression first = iast.getCondition().accept(this, env);
+        IASTexpression second = iast.getFirstResult().accept(this, env);
+        IASTexpression third = iast.getSecondResult().accept(this, env);
         return factory.newTernaryOperation(operator, first, second, third);
 	}
     

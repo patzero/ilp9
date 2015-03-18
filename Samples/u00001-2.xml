@@ -15,7 +15,7 @@
 	<!-- result = 0 > 1 ? true : false; -->
 	
 	  <!-- if 0 > 1-->
-      <firstOperand>
+      <condition>
         <binaryOperation operator="&gt;">
 		  <leftOperand>
 			 <integer value="0" />
@@ -24,17 +24,17 @@
 			 <integer value="1" />
 		  </rightOperand>
 	    </binaryOperation>
-      </firstOperand>
+      </condition>
 	  
 	  <!-- then value = true -->
-      <secondOperand>
+      <firstResult>
 		 <boolean value="true" />
-      </secondOperand>
+      </firstResult>
 	  
 	  <!-- else value = false-->
-	  <thirdOperand>
+	  <secondResult>
          <boolean value="false" />
-      </thirdOperand>
+      </secondResult>
 	  
    </ternaryOperation>
 </program>

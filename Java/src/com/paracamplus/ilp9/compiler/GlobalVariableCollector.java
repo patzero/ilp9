@@ -149,9 +149,9 @@ implements IASTCvisitor<Set<IASTCglobalVariable>,
 			IASTternaryOperation iast,
 			Set<IASTCglobalVariable> result)
 					throws CompilationException {
-		iast.getFirstOperand().accept(this, result);
-        iast.getSecondOperand().accept(this, result);
-        iast.getThirdOperand().accept(this, result);
+		iast.getCondition().accept(this, result);
+        iast.getFirstResult().accept(this, result);
+        iast.getSecondResult().accept(this, result);
         return result;
 	}
     

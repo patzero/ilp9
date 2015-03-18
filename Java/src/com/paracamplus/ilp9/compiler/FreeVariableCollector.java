@@ -137,9 +137,9 @@ implements IASTCvisitor<Void, Set<IASTClocalVariable>, CompilationException> {
     
 	public Void visit(IASTternaryOperation iast, Set<IASTClocalVariable> variables)
 			throws CompilationException {
-	     iast.getFirstOperand().accept(this, variables);
-	     iast.getSecondOperand().accept(this, variables);
-	     iast.getThirdOperand().accept(this, variables);
+	     iast.getCondition().accept(this, variables);
+	     iast.getFirstResult().accept(this, variables);
+	     iast.getSecondResult().accept(this, variables);
 	     return null;
 	}
     

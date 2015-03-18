@@ -7,7 +7,7 @@
 package com.paracamplus.ilp9.interfaces;
 
 public interface IASTternaryOperation extends IASToperation {
-	IASTexpression getFirstOperand();
-	IASTexpression getSecondOperand();
-	IASTexpression getThirdOperand();
+	IASTexpression getCondition();
+	IASTexpression getFirstResult();
+	IASTexpression getSecondResult();
 }

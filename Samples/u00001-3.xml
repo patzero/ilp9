@@ -15,19 +15,19 @@
 	<!-- result = 0 > 1 ? true : false; -->
 	
 	  <!-- if 0 > 1-->
-      <firstOperand>
+      <condition>
         <string>0 == 0</string>
-      </firstOperand>
+      </condition>
 	  
 	  <!-- then value = true -->
-      <secondOperand>
+      <firstResult>
 		 <boolean value="true" />
-      </secondOperand>
+      </firstResult>
 	  
 	  <!-- else value = false-->
-	  <thirdOperand>
+	  <secondResult>
          <boolean value="false" />
-      </thirdOperand>
+      </secondResult>
 	  
    </ternaryOperation>
 </program>

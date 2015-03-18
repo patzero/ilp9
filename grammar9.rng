@@ -280,13 +280,13 @@
 			  <value>?:</value>
 			</choice>
 		</attribute>
-		<element name="firstOperand">
+		<element name="condition">
 			<ref name="expression"/>
 		</element>
-		<element name="secondOperand">
+		<element name="firstResult">
 			<ref name="expression"/>
 		</element>
-		<element name="thirdOperand">
+		<element name="secondResult">
 			<ref name="expression"/>
 		</element>
     </element>

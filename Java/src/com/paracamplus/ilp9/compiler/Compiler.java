@@ -434,11 +434,11 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException> {
         emit("  ILP_Object " + tmp3.getMangledName() + "; \n");
         
         Context c1 = context.redirect(new AssignDestination(tmp1));
-        iast.getFirstOperand().accept(this, c1);
+        iast.getCondition().accept(this, c1);
         Context c2 = context.redirect(new AssignDestination(tmp2));
-        iast.getSecondOperand().accept(this, c2);
+        iast.getFirstResult().accept(this, c2);
         Context c3 = context.redirect(new AssignDestination(tmp3));
-        iast.getThirdOperand().accept(this, c3);
+        iast.getSecondResult().accept(this, c3);
         
         String cName = operatorEnvironment.getTernaryOperator(iast.getOperator());
         emit(context.destination.compile());

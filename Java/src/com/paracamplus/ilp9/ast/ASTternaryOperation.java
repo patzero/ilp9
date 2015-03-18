@@ -16,15 +16,15 @@ public class ASTternaryOperation extends ASTexpression implements IASTternaryOpe
 	
 
     private final IASToperator operator;
-    private final IASTexpression firstOperand;
-    private final IASTexpression secondOperand;
-    private final IASTexpression thirdOperand;
+    private final IASTexpression condition;
+    private final IASTexpression firstResult;
+    private final IASTexpression secondResult;
     
-    public ASTternaryOperation (IASToperator operator,IASTexpression firstOperand, IASTexpression secondOperand, IASTexpression thirdOperand ) {
+    public ASTternaryOperation (IASToperator operator,IASTexpression condition, IASTexpression firstResult, IASTexpression secondResult ) {
         this.operator = operator;
-        this.firstOperand = firstOperand;
-        this.secondOperand = secondOperand;
-        this.thirdOperand = thirdOperand;
+        this.condition = condition;
+        this.firstResult = firstResult;
+        this.secondResult = secondResult;
     }
     
     public IASToperator getOperator() {
@@ -32,19 +32,19 @@ public class ASTternaryOperation extends ASTexpression implements IASTternaryOpe
     }
 
     public IASTexpression[] getOperands() {
-        return new IASTexpression[]{ firstOperand, secondOperand, thirdOperand };
+        return new IASTexpression[]{ condition, firstResult, secondResult };
     }
 
-    public IASTexpression getFirstOperand() {
-        return firstOperand;
+    public IASTexpression getCondition() {
+        return condition;
     }
 
-    public IASTexpression getSecondOperand() {
-        return secondOperand;
+    public IASTexpression getFirstResult() {
+        return firstResult;
     }
     
-    public IASTexpression getThirdOperand() {
-        return thirdOperand;
+    public IASTexpression getSecondResult() {
+        return secondResult;
     }
     
     public <Result, Data, Anomaly extends Throwable> 
